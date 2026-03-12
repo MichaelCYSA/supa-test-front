@@ -1,14 +1,13 @@
-import { useEffect } from 'react';
-import { useGameStore } from './store/useGameStore';
-import LoadingScreen from './components/ui/LoadingScreen';
-import BottomNav from './components/ui/BottomNav';
-import Header from './components/ui/Header';
-import Notification from './components/ui/Notification';
-import MainScreen from './components/screens/MainScreen';
-import BuildingsScreen from './components/screens/BuildingsScreen';
-import HeroesScreen from './components/screens/HeroesScreen';
-import TasksScreen from './components/screens/TasksScreen';
-import ShopScreen from './components/screens/ShopScreen';
+import { useEffect } from "react";
+import { useGameStore } from "./store/useGameStore";
+import LoadingScreen from "./components/ui/LoadingScreen";
+import BottomNav from "./components/ui/BottomNav";
+import Header from "./components/ui/Header";
+import MainScreen from "./components/screens/MainScreen";
+import BuildingsScreen from "./components/screens/BuildingsScreen";
+import HeroesScreen from "./components/screens/HeroesScreen";
+import TasksScreen from "./components/screens/TasksScreen";
+import ShopScreen from "./components/screens/ShopScreen";
 
 const styles = `
   :root {
@@ -213,7 +212,8 @@ const styles = `
 `;
 
 export default function App() {
-  const { loaded, activeTab, floatingNumbers, notification, loadState } = useGameStore();
+  const { loaded, activeTab, floatingNumbers, notification, loadState } =
+    useGameStore();
 
   useEffect(() => {
     // Init Telegram WebApp
@@ -221,8 +221,8 @@ export default function App() {
     if (twa) {
       twa.ready();
       twa.expand();
-      twa.setHeaderColor('#0a0015');
-      twa.setBackgroundColor('#0a0015');
+      twa.setHeaderColor("#0a0015");
+      twa.setBackgroundColor("#0a0015");
       twa.disableVerticalSwipes?.();
     }
 
@@ -242,8 +242,8 @@ export default function App() {
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              '--dur': `${2 + Math.random() * 4}s`,
-              '--delay': `${Math.random() * 4}s`,
+              "--dur": `${2 + Math.random() * 4}s`,
+              "--delay": `${Math.random() * 4}s`,
               opacity: Math.random() * 0.8 + 0.2,
               width: `${Math.random() > 0.9 ? 3 : 2}px`,
               height: `${Math.random() > 0.9 ? 3 : 2}px`,
@@ -255,21 +255,29 @@ export default function App() {
       {!loaded ? (
         <LoadingScreen />
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100dvh', position: 'relative', zIndex: 1 }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100dvh",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
           <Header />
           <div className="screen">
-            {activeTab === 'main' && <MainScreen />}
-            {activeTab === 'buildings' && <BuildingsScreen />}
-            {activeTab === 'heroes' && <HeroesScreen />}
-            {activeTab === 'tasks' && <TasksScreen />}
-            {activeTab === 'shop' && <ShopScreen />}
+            {activeTab === "main" && <MainScreen />}
+            {activeTab === "buildings" && <BuildingsScreen />}
+            {activeTab === "heroes" && <HeroesScreen />}
+            {activeTab === "tasks" && <TasksScreen />}
+            {activeTab === "shop" && <ShopScreen />}
           </div>
           <BottomNav />
         </div>
       )}
 
       {/* Floating tap numbers */}
-      {floatingNumbers.map(f => (
+      {floatingNumbers.map((f) => (
         <div
           key={f.id}
           className="float-number"
